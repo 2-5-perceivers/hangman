@@ -1,0 +1,20 @@
+[package]
+name = "spanzuratoarea"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+raylib = {version = "3.7.0"}
+
+[build-dependencies]
+copy_to_output = "2.1.0"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+raylib = {version = "3.7.0", features=["nobuild"]}
+
+[profile.release]
+strip = true  # Automatically strip symbols from the binary.
+codegen-units = 1 # Allow for maximum size reduction optimizations
+lto = true
